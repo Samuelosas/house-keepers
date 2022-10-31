@@ -20,6 +20,11 @@
 				"internalType": "string",
 				"name": "_newAgency_image",
 				"type": "string"
+			},
+			{
+				"internalType": "bool",
+				"name": "_sellable",
+				"type": "bool"
 			}
 		],
 		"name": "buyAgency",

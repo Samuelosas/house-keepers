@@ -1,14 +1,28 @@
 import React, { useState } from "react"
 import { Button, Modal, Form } from "react-bootstrap"
 
-export const BuyAgency = ({ name, about, imgUrl, worth, isSellable }) => {
+export const BuyAgency = ({
+  name,
+  about,
+  imgUrl,
+  worth,
+  isSellable,
+  buyAgency,
+  index,
+}) => {
   const [show, setShow] = useState(false)
   const [name_, setName] = useState(name)
   const [imgUrl_, setImgUrl] = useState(imgUrl)
   const [about_, setAbout] = useState(about)
+  const [sellable, setSellable] = useState(isSellable)
 
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
+  const onBuy = async (e) => {
+    e.preventDefault()
+    await buyAgency(index, name_, about_, imgUrl_, sellable)
+    setShow(false)
+  }
   return (
     <>
       {isSellable && (
@@ -21,7 +35,7 @@ export const BuyAgency = ({ name, about, imgUrl, worth, isSellable }) => {
               <Modal.Title>Buy this Agency</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-              <Form>
+              <Form onSubmit={onBuy}>
                 <Form.Group className="mb-3" controlId="formBasicName">
                   <Form.Label>Enter preferred Agency Name</Form.Label>
                   <Form.Control
@@ -45,7 +59,7 @@ export const BuyAgency = ({ name, about, imgUrl, worth, isSellable }) => {
                   />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicAbout">
-                  <Form.Label>Enter What your agency will do.</Form.Label>
+                  <Form.Label>Enter what this agency will do.</Form.Label>
                   <Form.Control
                     as="textarea"
                     rows={3}
@@ -53,6 +67,17 @@ export const BuyAgency = ({ name, about, imgUrl, worth, isSellable }) => {
                     required
                     value={about_}
                     onChange={(e) => setAbout(e.target.value)}
+                  />
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                  <Form.Check
+                    type="checkbox"
+                    label="Do you want to make this agency sellable?"
+                    value={sellable}
+                    checked={sellable}
+                    onChange={() =>
+                      sellable ? setSellable(false) : setSellable(true)
+                    }
                   />
                 </Form.Group>
 

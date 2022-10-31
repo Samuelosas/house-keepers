@@ -1,10 +1,9 @@
 import React, { useState } from "react"
 import Button from "react-bootstrap/Button"
 import Modal from "react-bootstrap/Modal"
-import { Form } from "react-bootstrap"
+import { Alert, Form } from "react-bootstrap"
 
-export const RegisterAgency = () => {
-  const [show, setShow] = useState(false)
+export const RegisterAgency = ({ register, msg, action, show, setShow }) => {
   const [sellable, setSellable] = useState(false)
   const [name, setName] = useState("")
   const [imgUrl, setImgUrl] = useState("")
@@ -15,6 +14,14 @@ export const RegisterAgency = () => {
 
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
+  const onRegister = async (e) => {
+    e.preventDefault()
+    try {
+      await register(name, location, about, imgUrl, sellable, worth, hire_fee)
+    } catch (error) {
+      console.log(error.message)
+    }
+  }
   return (
     <div className="my-3">
       <Button variant="success" onClick={handleShow}>
@@ -24,8 +31,9 @@ export const RegisterAgency = () => {
         <Modal.Header closeButton>
           <Modal.Title>Register Your Agency</Modal.Title>
         </Modal.Header>
+        {action && <Alert variant="warning">{msg}</Alert>}
         <Modal.Body>
-          <Form>
+          <Form onSubmit={onRegister}>
             <Form.Group className="mb-3" controlId="formBasicName">
               <Form.Control
                 type="text"

@@ -53,6 +53,16 @@ contract housekeepers {
         uint _agency_worth,
         uint _hire_fee
     ) public{
+        require(
+            _hire_fee > 0,
+             "Hiring fee must be greater than zero"
+        );
+        if(_sellable){
+            require(
+                _agency_worth > 0,
+                "Agency worth must be greater than zero"
+            );
+        }
         agencies.push(Agency(
             payable(msg.sender),
             _agency_name,
@@ -61,7 +71,7 @@ contract housekeepers {
             _agency_image,
             _hire_fee,
             _sellable,
-            _agency_worth,
+            _sellable ? _agency_worth : 0,
             0
         ));
     }
@@ -102,7 +112,8 @@ contract housekeepers {
         uint _index,
         string calldata _newAgencyName,
         string calldata _newAgency_info,
-        string calldata _newAgency_image
+        string calldata _newAgency_image,
+        bool _sellable
     ) public payable approveTransfer(_index){
         require(
             agencies[_index].sellable == true, 
@@ -112,6 +123,7 @@ contract housekeepers {
         agencies[_index].agency_name = _newAgencyName;
         agencies[_index].agency_info = _newAgency_info;
         agencies[_index].agency_image = _newAgency_image;
+        agencies[_index].sellable = _sellable;
     }
 
     function getAgencies() public view returns(Agency[] memory){
