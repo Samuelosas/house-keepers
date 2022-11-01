@@ -13,6 +13,7 @@ export const Card = ({
   hire,
   index,
   buyAgency,
+  owner,
 }) => {
   return (
     <BSCard className="border-0 agency my-2">
@@ -35,18 +36,26 @@ export const Card = ({
           </div>
         </BSCard.Text>
         <div className="d-flex justify-content-between">
-          <Button variant="success" size="sm" onClick={() => hire(index)}>
-            Hire Agency {hire_amount}cUSD
-          </Button>
-          <BuyAgency
-            name={name}
-            about={about}
-            imgUrl={image}
-            worth={agency_worth}
-            isSellable={isSellable}
-            buyAgency={buyAgency}
-            index={index}
-          />
+          {owner ? (
+            <h6 className="text-muted alert alert-secondary py-1 px-2">
+              You own this Agency!
+            </h6>
+          ) : (
+            <>
+              <Button variant="success" size="sm" onClick={() => hire(index)}>
+                Hire Agency {hire_amount}cUSD
+              </Button>
+              <BuyAgency
+                name={name}
+                about={about}
+                imgUrl={image}
+                worth={agency_worth}
+                isSellable={isSellable}
+                buyAgency={buyAgency}
+                index={index}
+              />
+            </>
+          )}
         </div>
       </BSCard.Body>
     </BSCard>

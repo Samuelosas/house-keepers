@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Button, Modal, Form } from "react-bootstrap"
+import { Button, Modal, Form, Alert } from "react-bootstrap"
 
 export const BuyAgency = ({
   name,
@@ -15,12 +15,15 @@ export const BuyAgency = ({
   const [imgUrl_, setImgUrl] = useState(imgUrl)
   const [about_, setAbout] = useState(about)
   const [sellable, setSellable] = useState(isSellable)
+  const [disable, setDisable] = useState(false)
 
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
   const onBuy = async (e) => {
     e.preventDefault()
+    setDisable(true)
     await buyAgency(index, name_, about_, imgUrl_, sellable)
+    setDisable(false)
     setShow(false)
   }
   return (
@@ -81,9 +84,14 @@ export const BuyAgency = ({
                   />
                 </Form.Group>
 
-                <Button variant="primary" type="submit">
+                <Button variant="primary" type="submit" disabled={disable}>
                   Buy Agency {worth}cUSD
                 </Button>
+                {disable && (
+                  <Alert variant="warning" className="mt-3">
+                    Awaiting Payment... Please follow The on screen prompts.
+                  </Alert>
+                )}
               </Form>
             </Modal.Body>
             <Modal.Footer></Modal.Footer>

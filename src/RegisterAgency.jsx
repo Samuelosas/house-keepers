@@ -11,15 +11,19 @@ export const RegisterAgency = ({ register, msg, action, show, setShow }) => {
   const [about, setAbout] = useState("")
   const [hire_fee, setHire_fee] = useState()
   const [worth, setWorth] = useState()
+  const [disable, setDisable] = useState(false)
 
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
   const onRegister = async (e) => {
     e.preventDefault()
     try {
+      setDisable(true)
       await register(name, location, about, imgUrl, sellable, worth, hire_fee)
+      setDisable(false)
     } catch (error) {
       console.log(error.message)
+      setDisable(false)
     }
   }
   return (
@@ -100,7 +104,7 @@ export const RegisterAgency = ({ register, msg, action, show, setShow }) => {
                 }
               />
             </Form.Group>
-            <Button variant="primary" type="submit">
+            <Button variant="primary" type="submit" disabled={disable}>
               Register
             </Button>
           </Form>

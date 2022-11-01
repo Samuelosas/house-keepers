@@ -174,13 +174,13 @@ function App() {
   }, [kit, contract])
   return (
     <Container>
-      <div className="d-flex align-items-center justify-content-between my-4">
+      <div className="d-flex align-items-center justify-content-between my-3">
         <h3>House Keepers</h3>
         <Balance balance={balance} />
       </div>
       {showNotification && (
         <>
-          <div className="mt-5">
+          <div className="mt-3">
             <Alert variant={"warning"}>{msg}</Alert>
           </div>
         </>
@@ -217,6 +217,7 @@ function App() {
                     hire={hireAgency}
                     index={key}
                     buyAgency={buyAgency}
+                    owner={agency.agency_address === kit.defaultAccount}
                   />
                 </Col>
               ))}
