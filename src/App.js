@@ -14,7 +14,7 @@ import ierc20Abi from "./contract/IERC20.abi.json"
 
 function App() {
   const cUSDContractAddress = "0x874069Fa1Eb16D44d622F2e0Ca25eeA172369bC1"
-  const deployAddress = "0x42e0C8cB22C581De0Fa7990EB8a1C0656f113f26"
+  const deployAddress = "0x78b4D7759d95FfE53CDaCdd8C237328678E74629"
   const [show, setShow] = useState(false)
   const [kit, setKit] = useState()
   const [contract, setContract] = useState()
