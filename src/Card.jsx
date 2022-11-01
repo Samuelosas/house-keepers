@@ -20,7 +20,7 @@ export const Card = ({
       <BSCard.Img
         variant="top"
         src={image}
-        style={{ width: "100%", height: "18rem" }}
+        style={{ width: "100%", height: "14rem" }}
       />
       <BSCard.Body>
         <BSCard.Title className="mb-3">{name}</BSCard.Title>

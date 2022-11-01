@@ -21,6 +21,12 @@ export const RegisterAgency = ({ register, msg, action, show, setShow }) => {
       setDisable(true)
       await register(name, location, about, imgUrl, sellable, worth, hire_fee)
       setDisable(false)
+      setName("")
+      setImgUrl("")
+      setAbout("")
+      setWorth("")
+      setHire_fee("")
+      setSellable(false)
     } catch (error) {
       console.log(error.message)
       setDisable(false)
