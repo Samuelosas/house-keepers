@@ -121,7 +121,7 @@ function App() {
     setShowNotification(true)
     setMsg("⌛ Waiting for payment approval...")
     try {
-      await approve(new BigNumber(agencies[index].hire_fee))
+      await approve(new BigNumber(agencies[index].hire_fee).toString())
       setMsg(`⌛ Awaiting payment for "${agencies[index].agency_name}"...`)
     } catch (error) {
       setMsg(`⚠️ ${error.message}.`)
@@ -144,7 +144,7 @@ function App() {
     setShowNotification(true)
     setMsg("⌛ Waiting for payment approval...")
     try {
-      await approve(new BigNumber(agencies[index].agency_worth))
+      await approve(new BigNumber(agencies[index].agency_worth).toString())
       setMsg(`⌛ Awaiting payment for "${agencies[index].agency_name}"...`)
     } catch (error) {
       setMsg(`⚠️ ${error.message}.`)
