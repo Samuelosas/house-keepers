@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/house-keepers/static/css/main.12440d8d.chunk.css",
+    "main.js": "/house-keepers/static/js/main.ed2aa26c.chunk.js",
+    "main.js.map": "/house-keepers/static/js/main.ed2aa26c.chunk.js.map",
+    "runtime-main.js": "/house-keepers/static/js/runtime-main.e81e712c.js",
+    "runtime-main.js.map": "/house-keepers/static/js/runtime-main.e81e712c.js.map",
+    "static/css/2.42d51ddf.chunk.css": "/house-keepers/static/css/2.42d51ddf.chunk.css",
+    "static/js/2.81e2eeb0.chunk.js": "/house-keepers/static/js/2.81e2eeb0.chunk.js",
+    "static/js/2.81e2eeb0.chunk.js.map": "/house-keepers/static/js/2.81e2eeb0.chunk.js.map",
+    "index.html": "/house-keepers/index.html",
+    "static/css/2.42d51ddf.chunk.css.map": "/house-keepers/static/css/2.42d51ddf.chunk.css.map",
+    "static/css/main.12440d8d.chunk.css.map": "/house-keepers/static/css/main.12440d8d.chunk.css.map",
+    "static/js/2.81e2eeb0.chunk.js.LICENSE.txt": "/house-keepers/static/js/2.81e2eeb0.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e81e712c.js",
+    "static/css/2.42d51ddf.chunk.css",
+    "static/js/2.81e2eeb0.chunk.js",
+    "static/css/main.12440d8d.chunk.css",
+    "static/js/main.ed2aa26c.chunk.js"
+  ]
+}
