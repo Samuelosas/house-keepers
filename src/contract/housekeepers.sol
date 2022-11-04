@@ -148,10 +148,12 @@ contract housekeepers {
         agencies[_index].sold = true;
     }
 
+    // Get List of Agencies 
     function getAgencies() public view returns(Agency[] memory){
         return agencies;
     }
 
+    // Get List of User Transactions
     function getUserTransactions () public view returns(Transaction[] memory){
         return users_transactions[msg.sender];
     }
