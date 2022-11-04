@@ -33,6 +33,8 @@ contract housekeepers {
         bool sellable;
         uint agency_worth;
         uint customers;
+        uint date_hired;
+        bool sold;
     }
 
     struct Transaction {
@@ -72,7 +74,9 @@ contract housekeepers {
             _hire_fee,
             _sellable,
             _sellable ? _agency_worth : 0,
-            0
+            0,
+            0,
+            false
         ));
     }
 
@@ -104,6 +108,15 @@ contract housekeepers {
             agencies[_index].hire_fee
         ));
         agencies[_index].customers++;
+        agencies[_index].date_hired = block.timestamp;
+    }
+
+    // check if hiring time limit has expired 
+    function isHiringExpired(uint _index)public view returns(bool) {
+        if(block.timestamp > agencies[_index].date_hired + 2 minutes){
+            return true;
+        }
+        return false;
     }
 
     // You can buy a registered agency and be the  company/individual
@@ -124,6 +137,15 @@ contract housekeepers {
         agencies[_index].agency_info = _newAgency_info;
         agencies[_index].agency_image = _newAgency_image;
         agencies[_index].sellable = _sellable;
+        agencies[_index].sold = false;
+    }
+    // function to sell a sellable agency
+    function sellAgency(uint _index) public  {
+        require(
+            agencies[_index].sellable == true, 
+            "This House Keeping agency is not for sale."
+        );
+        agencies[_index].sold = true;
     }
 
     function getAgencies() public view returns(Agency[] memory){
